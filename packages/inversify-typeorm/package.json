@@ -1,6 +1,6 @@
 {
   "name": "@panjoh-inversify/typeorm",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "'Typeorm integration for inversify'",
   "types": "dist/index.d.ts",
   "keywords": [

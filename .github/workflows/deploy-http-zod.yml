@@ -1,0 +1,44 @@
+name: deploy http zod
+on:
+    push:
+        tags:
+            - inversify-http-zod@v*
+
+jobs:
+    build: 
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - uses: actions/setup-node@v7
+              with:
+                node-version: '24'
+            - run: |
+                npm i
+                cd packages/inversify-http-zod
+                npx tsc
+            - uses: actions/upload-artifact@v4
+              with:
+                name: dist
+                path: |
+                    packages/inversify-http-zod/dist
+
+    deploy:
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+            - uses: actions/checkout@v6
+            - uses: actions/download-artifact@v5
+              with:
+                name: dist
+                path: packages/inversify-http-zod/dist
+            - uses: actions/setup-node@v7
+              with:
+                node-version: '24'
+                registry-url: 'https://registry.npmjs.org'
+            - run: npm i
+            - run: |
+                cd packages/inversify-http-cod
+                npm publish --access public
+              env:
+                NODE_AUTH_TOKEN: ${{secrets.DEPLOY_HTTP_ZOD}}
+
