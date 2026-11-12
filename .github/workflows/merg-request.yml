@@ -39,7 +39,8 @@ jobs:
 
     build-example-socket-io:
         needs: check-for-changes
-        if: ${{needs.check-for-changes.outputs.example-socket-io == 'true' || needs.check-for-changes.outputs.typeorm == 'true'}} 
+        if: |
+          ${{needs.check-for-changes.outputs.example-socket-io == 'true' || needs.check-for-changes.outputs.typeorm == 'true' || needs.check-for-changes.outputs.socket-io == 'true'}} 
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v6
