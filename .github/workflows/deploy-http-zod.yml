@@ -40,5 +40,5 @@ jobs:
                 cd packages/inversify-http-cod
                 npm publish --access public
               env:
-                NODE_AUTH_TOKEN: ${{secrets.DEPLOY_HTTP_ZOD}}
+                NODE_AUTH_TOKEN: ${{secrets.NPM_DEPLOY_TOKEN}}
 

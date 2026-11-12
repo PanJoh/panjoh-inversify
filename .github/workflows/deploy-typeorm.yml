@@ -40,4 +40,4 @@ jobs:
                 npx tsc
                 npm publish --access public
               env:
-                NODE_AUTH_TOKEN: ${{secrets.DELPOY_TYPEORM}}
+                NODE_AUTH_TOKEN: ${{secrets.NPM_DEPLOY_TOKEN}}
