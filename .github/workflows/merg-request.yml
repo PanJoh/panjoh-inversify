@@ -1,0 +1,84 @@
+name: merge request
+on:
+    pull_request:
+        types: [opened, synchronize, reopened]
+
+jobs:
+    check-for-changes:
+        runs-on: ubuntu-latest
+        outputs: 
+            example-http-zod-basic-usage: ${{steps.filter.outputs.example-http-zod-basick-usage}}
+            example-http-zod-usage-in-controller: ${{steps.filter.outputs.example-http-zod-usage-in-controller}}
+            example-socket-io: ${{steps.filter.outputs.example-socket-io}}
+            example-typeorm-test-app: ${{steps.filter.outputs.example-typeorm-test-app}}
+            socket-io: ${{steps.filter.outputs.socket-io}}
+            socket-io-class-transformer: ${{steps.filter.outputs.socket-io-class-transformer}}
+            http-zod: ${{steps.filter.outputs.http-zod}}
+            typeorm: ${{steps.filter.outputs.typeorm}}
+        steps:
+            - uses: dorny/paths-filter@v4
+              id: filter
+              with: 
+                filters: |
+                    example-http-zod-basic-usage:
+                        - 'packages/examples/http-zod/basic-usage/src/**/*.ts'
+                    example-http-zod-usage-in-controller:
+                        - packages/examples/http-zod/usage-in-controller/src/**/*.ts
+                    example-socket-io:
+                        - packages/examples/socket-io/src/**/*.ts
+                    example-typeorm-test-app:
+                        - packages/examples/typeorm/test-app/*.ts
+                    socket-io:
+                        - 'packages/inversify-socket-io/src/**/*.ts'
+                    class-transformer:
+                        - 'packages/inversify-socket-io-class-transformer/**/*.ts'
+                    http-zod:
+                        - packages/inversify-http-zod/src/**/*.ts
+                    typeorm:
+                        - packages/inversify-typeorm/src/**/*.ts
+
+    build-example-socket-io:
+        needs: check-for-changes
+        if: ${{needs.check-for-changes.outputs.example-socket-io == 'true' || needs.check-for-changes.outputs.typeorm}} 
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - uses: actions/setup-node@v7
+              with:
+                node-version: '24'
+            - run: npm install
+            - id: build-dependencis
+              run: |
+                cd packages/inversify-socket-io
+                npx tsc
+                cd ../inversify-socket-io-class-transformer
+                npx tsc
+            - run: |
+                cd packages/examples/socket-io
+                npx tsc
+
+    build-socket-io:
+        needs: check-for-changes
+        if: ${{needs.check-for-changes.outputs.socket-io == 'true'}}
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - uses: actions/setup-node@v7
+              with:
+                node-version: '24'
+            - run: |
+                cd packages/inversify-socket-io
+                npx tsc
+    
+    build-class-transformer:
+        needs: check-for-changes
+        if: ${{needs.check-for-changes.outputs.socket-io-class-transformer == 'true'}}
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - uses: actions/setup-node@v7
+              with:
+                node-version: '24'
+            - run: |
+                cd packages/inversify-socket-io-class-transformer
+                npx tsc
