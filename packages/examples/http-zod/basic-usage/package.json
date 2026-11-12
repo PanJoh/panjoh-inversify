@@ -1,0 +1,20 @@
+{
+  "name": "basic-usage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "nodemon --exec \"npx tsc && node .\"",
+    "run:debug": "nodemon --exec \"npx tsc && node --inspect .",
+    "run:brk": "nodemon --exec \"npx tsc && node --inspect-brk .\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}

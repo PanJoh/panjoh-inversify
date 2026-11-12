@@ -1,0 +1,38 @@
+{
+  "name": "@panjoh-inversify/http-zod",
+  "version": "1.0.0",
+  "description": "pipes for zod schemas",
+  "keywords": [
+    "zod",
+    "inverfify",
+    "pipes"
+  ],
+  "license": "UNLICENSED",
+  "author": "Giannis Pandis (johannespandis@gmail.com)",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "vitest",
+    "build": "tsc",
+    "build:prod": "tsc --sourceMap false --declarationMap false",
+    "dev": "nodemon -e ts --watch src --exec \"npm run build\""
+  },
+  "devDependencies": {
+    "@inversifyjs/http-core": "^5.10.0",
+    "@types/node": "^26.6.6",
+    "nodemon": "^3.1.14",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0",
+    "zod": "^4.6.7"
+  },
+  "peerDependencies": {
+    "@inversifyjs/http-core": "^5.10.0",
+    "zod": "^4.6.7"
+  },
+  "repository": {
+        "type": "git",
+        "url": "https://github.com/PanJoh/inversify-http-zod.git"
+    }
+
+}

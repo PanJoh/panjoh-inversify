@@ -1,0 +1,8 @@
+{
+    "verbose": true,
+    "ext": "ts,js",
+    "watch": [
+        "src/**",
+        "../../inversify-http-zod/dist/**"
+    ]
+}
