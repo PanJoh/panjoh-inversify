@@ -1,0 +1,4 @@
+add producton builds to all projects
+add unit tests to all projects
+test merge pipline with unit tests
+test deploy pipelines
