@@ -1,4 +1,4 @@
-import { ZodPipe, type SchemaType } from '@panjoh/inversify-http-zod';
+import { ZodPipe, type SchemaType } from '@panjoh-inversify/http-zod';
 import z from 'zod';
 
 const MultiplyRequestSchema = z.object({

@@ -1,4 +1,4 @@
-import { Client, Data, SocketIoHandler, type ISocketIoHandler } from "@panjoh/inversify-socket-io";
+import { Client, Data, SocketIoHandler, type ISocketIoHandler } from "@panjoh-inversify/socket-io";
 import { ClassTransformerPipe } from '@panjoh-inversify/socket-io-class-transfomer';
 import { IsString } from 'class-validator';
 import type { Socket } from "socket.io";

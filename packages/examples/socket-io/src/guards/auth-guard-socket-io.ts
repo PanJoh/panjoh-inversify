@@ -1,10 +1,9 @@
 import { inject, injectable } from "inversify";
 import { IncomingMessage } from "node:http";
-import { createParamDecorator, type SocketIoHandlerMessageGuard } from "@panjoh/inversify-socket-io";
+import { createParamDecorator, type SocketIoHandlerMessageGuard, type ParameterDecoratorHandler } from "@panjoh-inversify/socket-io";
 import type { Socket } from "socket.io";
 import { AuthService } from "../services/auth.service.js";
 import type { UserEntity } from "../models/User.entity.js";
-import type { ParameterDecoratorHandler } from "@panjoh/inversify-socket-io";
 
 const BearerRegExp = /^Bearer (.*)$/
 

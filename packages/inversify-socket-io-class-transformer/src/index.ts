@@ -1,4 +1,4 @@
-import { type PipeTransform } from '@panjoh/inversify-socket-io';
+import { type PipeTransform } from '@panjoh-inversify/socket-io';
 import { plainToInstance, type ClassConstructor } from 'class-transformer';
 import { validate, validateOrReject, ValidationError} from 'class-validator';
 

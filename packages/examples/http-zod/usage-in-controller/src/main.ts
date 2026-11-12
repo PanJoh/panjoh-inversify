@@ -2,7 +2,7 @@ import { Container } from 'inversify';
 import { Controller, Post, Body } from '@inversifyjs/http-core';
 import { InversifyExpressHttpAdapter } from '@inversifyjs/http-express';
 import z from 'zod';
-import { ZodPipe, type SchemaType } from '@panjoh/inversify-http-zod';
+import { ZodPipe, type SchemaType } from '@panjoh-inversify/http-zod';
 
 const CreateCarRequestSchema = z.object({
     type: z.string(),
