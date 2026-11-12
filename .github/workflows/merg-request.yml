@@ -30,7 +30,7 @@ jobs:
                         - packages/examples/typeorm/test-app/*.ts
                     socket-io:
                         - 'packages/inversify-socket-io/src/**/*.ts'
-                    class-transformer:
+                    socket-io-class-transformer:
                         - 'packages/inversify-socket-io-class-transformer/**/*.ts'
                     http-zod:
                         - packages/inversify-http-zod/src/**/*.ts
