@@ -82,3 +82,43 @@ jobs:
             - run: |
                 cd packages/inversify-socket-io-class-transformer
                 npx tsc
+
+    build-http-zod:
+        needs: check-for-changes
+        if: ${{needs.check-for-changes.outputs.http-zod == 'true'}}
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - uses: actions/setup-node@v7
+              with:
+                node-version: '24'
+            - run: |
+                cd packages/inversify-http-zod
+                npx tsc
+
+    build-typeorm:
+        needs: check-for-changes
+        if: ${{needs.check-for-changes.outputs.typeorm == 'true'}}
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - uses: actions/setup-node@v7
+              with:
+                node-version: '24'
+            - run: |
+                cd packages/inversify-typeorm
+                npx tsc
+
+    
+    test-http-zod:
+        needs: check-for-changes
+        if: ${{needs.check-for-changes.outputs.http-zod == 'true'}}
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - uses: actions/setup-node@v7
+              with:
+                node-version: '24'
+            - run: |
+                cd packages/inversify-http-zod
+                npm test
