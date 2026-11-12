@@ -67,6 +67,7 @@ jobs:
             - uses: actions/setup-node@v7
               with:
                 node-version: '24'
+            - run: npm i
             - run: |
                 cd packages/inversify-socket-io
                 npx tsc
