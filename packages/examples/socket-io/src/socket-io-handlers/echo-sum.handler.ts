@@ -1,4 +1,11 @@
-import { Client, Data, IsNumber, SocketIoHandler, UseMessageGuard, type ISocketIoHandler, type PipeTransform } from "@panjoh/inversify-socket-io";
+import { 
+    Client,
+    Data,
+    IsNumber,
+    SocketIoHandler,
+    type ISocketIoHandler,
+    type PipeTransform 
+} from "@panjoh-inversify/socket-io";
 import type { Socket } from "socket.io";
 
 @SocketIoHandler('echo-sum')

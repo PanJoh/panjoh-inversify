@@ -40,5 +40,5 @@ jobs:
                 cd packages/inversify-socket-io-class-transformer
                 npm publish --access public
               env:
-                NODE_AUTH_TOKEN: ${{secrets.NPM_DEPLOY_CLASS_TRANSFORMER}}
+                NODE_AUTH_TOKEN: ${{secrets.NPM_DEPLOY_TOKEN}}
 

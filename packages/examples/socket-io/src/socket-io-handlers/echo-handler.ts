@@ -1,4 +1,4 @@
-import { Client, Data, SocketIoHandler, UseMessageGuard, type ISocketIoHandler } from "@panjoh/inversify-socket-io";
+import { Client, Data, SocketIoHandler, UseMessageGuard, type ISocketIoHandler } from "@panjoh-inversify/socket-io";
 import { AuthGuardSocketIo, CurrentUserSocketIo } from "../guards/auth-guard-socket-io.js";
 import { Socket } from "socket.io";
 import type { UserEntity } from "../models/User.entity.js";

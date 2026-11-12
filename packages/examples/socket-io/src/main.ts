@@ -4,7 +4,7 @@ import { Container } from "inversify";
 import { AuthController } from "./controllers/auth.controller.js";
 import { AuthService } from "./services/auth.service.js";
 import { InversifyExpressHttpAdapter } from "@inversifyjs/http-express";
-import { SocketIoServer } from '@panjoh/inversify-socket-io'
+import { SocketIoServer } from '@panjoh-inversify/socket-io'
 import { EchoHandler } from './socket-io-handlers/echo-handler.js';
 import http from 'node:http';
 import { AuthGuardSocketIo } from './guards/auth-guard-socket-io.js';

@@ -30,7 +30,7 @@ jobs:
                         - packages/examples/typeorm/test-app/*.ts
                     socket-io:
                         - 'packages/inversify-socket-io/src/**/*.ts'
-                    class-transformer:
+                    socket-io-class-transformer:
                         - 'packages/inversify-socket-io-class-transformer/**/*.ts'
                     http-zod:
                         - packages/inversify-http-zod/src/**/*.ts
@@ -39,7 +39,8 @@ jobs:
 
     build-example-socket-io:
         needs: check-for-changes
-        if: ${{needs.check-for-changes.outputs.example-socket-io == 'true' || needs.check-for-changes.outputs.typeorm}} 
+        if: |
+          ${{needs.check-for-changes.outputs.example-socket-io == 'true' || needs.check-for-changes.outputs.typeorm == 'true' || needs.check-for-changes.outputs.socket-io == 'true'}} 
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v6
@@ -66,6 +67,7 @@ jobs:
             - uses: actions/setup-node@v7
               with:
                 node-version: '24'
+            - run: npm i
             - run: |
                 cd packages/inversify-socket-io
                 npx tsc
@@ -79,6 +81,7 @@ jobs:
             - uses: actions/setup-node@v7
               with:
                 node-version: '24'
+            - run: npm i
             - run: |
                 cd packages/inversify-socket-io-class-transformer
                 npx tsc
@@ -92,6 +95,7 @@ jobs:
             - uses: actions/setup-node@v7
               with:
                 node-version: '24'
+            - run: npm i
             - run: |
                 cd packages/inversify-http-zod
                 npx tsc
@@ -119,6 +123,7 @@ jobs:
             - uses: actions/setup-node@v7
               with:
                 node-version: '24'
+            - run: npm i
             - run: |
                 cd packages/inversify-http-zod
                 npm test
