@@ -112,7 +112,7 @@ jobs:
             - run: npm i
             - run: |
                 cd packages/inversify-typeorm
-                npm run build:prod
+                npm run build
 
     
     test-http-zod:
