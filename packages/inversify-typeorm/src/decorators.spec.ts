@@ -1,7 +1,6 @@
-import { describe, test, expect, vi } from 'vitest';
+import { describe, test, expect, vi, afterEach } from 'vitest';
 import * as inversify from 'inversify';
 import { injectDataSource, injectEntityManager, injectRepository } from './decorators.js'; 
-import { afterEach } from 'node:test';
 import { getDataSourceToken, getEntityToken, getEntityManagerToken } from './typeorm-module.js';
 import { Entity } from 'typeorm';
 
