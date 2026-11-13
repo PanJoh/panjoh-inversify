@@ -1,12 +1,26 @@
+import 'reflect-metadata';
 import { describe, test, expect, vi, afterEach } from 'vitest';
 import * as inversify from 'inversify';
 import { injectDataSource, injectEntityManager, injectRepository } from './decorators.js'; 
 import { getDataSourceToken, getEntityToken, getEntityManagerToken } from './typeorm-module.js';
 import { Entity } from 'typeorm';
 
-@Entity() 
+@Entity()
 class TestEntity {
 }
+
+// const { injectMock } = vi.hoisted(() => ({
+//     injectMock: vi.fn(),
+// }));
+
+// vi.mock('inversify', async (importOriginal) => {
+//     const original = await importOriginal<typeof import('inversify')>();
+
+//     return {
+//         ...original,
+//         inject: injectMock,
+//     }
+// });
 
 describe('decorator tests', () => {
     afterEach(() => {
@@ -15,6 +29,7 @@ describe('decorator tests', () => {
 
     test('inject repo should call with correct token', () => {
         const entityToken = getEntityToken(TestEntity);
+
         const injectSpy = vi.spyOn(inversify, 'inject');
 
         injectRepository(TestEntity);
@@ -44,7 +59,6 @@ describe('decorator tests', () => {
 
     test('inject datasource with datasource name shold call with correct token', () => {
         const injectSpy = vi.spyOn(inversify, 'inject');
-
         injectDataSource('my-data-source');
 
         const token = getDataSourceToken('my-data-source');
@@ -86,8 +100,8 @@ describe('decorator tests', () => {
     });
 
     test('inject data source shell return whatever inject returns', () => {
-        const injectSpy = vi.spyOn(inversify, 'inject');
         const decorator = (target: unknown) => undefined;
+        const injectSpy = vi.spyOn(inversify, 'inject');
 
         injectSpy.mockReturnValue(decorator);
 
