@@ -43,7 +43,7 @@ jobs:
           ${{needs.check-for-changes.outputs.example-socket-io == 'true' || needs.check-for-changes.outputs.typeorm == 'true' || needs.check-for-changes.outputs.socket-io == 'true'}} 
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - uses: actions/setup-node@v7
               with:
                 node-version: '24'
@@ -63,7 +63,7 @@ jobs:
         if: ${{needs.check-for-changes.outputs.socket-io == 'true'}}
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - uses: actions/setup-node@v7
               with:
                 node-version: '24'
@@ -77,7 +77,7 @@ jobs:
         if: ${{needs.check-for-changes.outputs.socket-io-class-transformer == 'true'}}
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - uses: actions/setup-node@v7
               with:
                 node-version: '24'
@@ -91,7 +91,7 @@ jobs:
         if: ${{needs.check-for-changes.outputs.http-zod == 'true'}}
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - uses: actions/setup-node@v7
               with:
                 node-version: '24'
@@ -105,10 +105,11 @@ jobs:
         if: ${{needs.check-for-changes.outputs.typeorm == 'true'}}
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - uses: actions/setup-node@v7
               with:
                 node-version: '24'
+            - run: npm i
             - run: |
                 cd packages/inversify-typeorm
                 npx tsc
@@ -119,7 +120,7 @@ jobs:
         if: ${{needs.check-for-changes.outputs.http-zod == 'true'}}
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - uses: actions/setup-node@v7
               with:
                 node-version: '24'
@@ -127,3 +128,17 @@ jobs:
             - run: |
                 cd packages/inversify-http-zod
                 npm test
+
+    test-type-orm:
+        needs: check-for-changes
+        if: ${{needs.check-for-changes.outputs.typeorm == 'true'}}
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v7
+            - uses: actions/setup-node@v7
+              with:
+                node-version: '24'
+            - run: npm i
+            - run: |
+                cd packages/inversify-typeorm
+                npx vitest
