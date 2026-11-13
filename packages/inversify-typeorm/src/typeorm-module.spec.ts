@@ -1,9 +1,9 @@
 import 'reflect-metadata';
-import { describe, vi, afterEach, Mock, expect, test } from "vitest";
-import { createTypeOrmModule, getDataSourceToken, getEntityToken } from "./typeorm-module";
+import { describe, vi, afterEach, expect, test } from "vitest";
+import { createTypeOrmModule, getDataSourceToken, getEntityToken } from "./typeorm-module.js";
 import * as inversify from 'inversify';
-import { Entity, Column, DataSource, DataSourceOptions, PrimaryColumn, Repository, EntityManager } from 'typeorm';
-import { injectDataSource, injectEntityManager, injectRepository } from './decorators';
+import { Entity, Column, DataSource, type DataSourceOptions, PrimaryColumn, Repository, EntityManager } from 'typeorm';
+import { injectDataSource, injectEntityManager, injectRepository } from './decorators.js';
 
 @Entity('tests')
 class TestEntity {
