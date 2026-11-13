@@ -15,7 +15,7 @@ jobs:
             - run: |
                 npm i
                 cd packages/inversify-typeorm
-                npx tsc --project tsconfig.prod.json
+                npm run build:prod
             - uses: actions/upload-artifact@v7
               with:
                 path: packages/inversify-typeorm/dist
@@ -37,7 +37,6 @@ jobs:
             - run: npm i
             - run: |
                 cd packages/inversify-typeorm
-                npx tsc
                 npm publish --access public
               env:
                 NODE_AUTH_TOKEN: ${{secrets.NPM_DEPLOY_TOKEN}}
