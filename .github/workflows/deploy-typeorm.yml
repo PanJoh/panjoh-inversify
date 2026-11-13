@@ -15,7 +15,7 @@ jobs:
             - run: |
                 npm i
                 cd packages/inversify-typeorm
-                npx tsc
+                npx tsc --project tsconfig.prod.json
             - uses: actions/upload-artifact@v7
               with:
                 path: packages/inversify-typeorm/dist

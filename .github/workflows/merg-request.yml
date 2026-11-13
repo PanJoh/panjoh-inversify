@@ -112,7 +112,7 @@ jobs:
             - run: npm i
             - run: |
                 cd packages/inversify-typeorm
-                npx tsc
+                npx tsc --project tsconfig.prod.json
 
     
     test-http-zod:
