@@ -1,4 +1,4 @@
-name: test http zod test
+name: test http zod build
 description: Test building the inversify-http-zod package
 
 on:
