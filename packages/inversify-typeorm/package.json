@@ -13,7 +13,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "vitest",
-    "build": "tsc --projcect tsconfig.prod.json",
+    "build": "tsc --project tsconfig.prod.json",
     "build:dev": "tsc --project tsconfig.dev.json"
   },
   "devDependencies": {

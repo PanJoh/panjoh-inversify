@@ -1,0 +1,10 @@
+name: typeorm build test
+on:
+    workflow_dispatch:
+
+jobs:
+    build-typeorm:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: ./github/actions/build-typeorm-action
+            - run: ls packages/inversify-typeorm/dist
