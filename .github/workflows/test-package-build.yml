@@ -12,7 +12,7 @@ jobs:
     build-typeorm:
         runs-on: ubuntu-latest
         steps:
-            - uses: PanJoh/panjoh-inversify-actions/build-package-action@v1
+            - uses: PanJoh/panjoh-inversify-actions/build-package-action@v2
               with:
                 prod: ${{inputs.prod}}
                 package-path: ${{inputs.package-path}}
