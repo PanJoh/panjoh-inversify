@@ -14,5 +14,5 @@ jobs:
             - uses: ./.github/actions/build-package-action
               with:
                 prod: ${{inputs.prod}}
-                action-path: packages/inversify-typeorm
+                package-path: packages/inversify-typeorm
             - run: ls packages/inversify-typeorm/dist
