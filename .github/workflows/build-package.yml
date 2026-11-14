@@ -1,10 +1,6 @@
 on:
     workflow_call:
         inputs:
-            prod:
-                required: true
-                type: string
-                default: 'false'
             package-path:
                 required: true
                 type: string
@@ -16,12 +12,7 @@ jobs:
     build-package:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v6
-            - uses: ./.github/actions/build-package-action
+            - uses: PanJoh/panjoh-inversify/.github/actions/build-and-upload-package-action@162009125db785a01d66ba42974f27d502bb091f
               with:
-                prod: ${{inputs.prod}}
                 package-path: ${{inputs.package-path}}
-            - uses: actions/upload-artifact@v7
-              with:
-                path: "${{inputs.package-path}}/dist"
-                name: ${{inputs.artifact-name}}
+                artifact-name: dist
