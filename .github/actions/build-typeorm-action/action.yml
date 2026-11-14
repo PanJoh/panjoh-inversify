@@ -12,7 +12,8 @@ runs:
             node-version: '24'
         - run: pwd
           shell: bash
-        - run: ${{github.action_path}}/build.sh
+        - run: ${ACTION_PATH}/build.sh
           shell: bash
           env:
             PROD: ${{inputs.prod}}
+            ACTION_PATH: ${{github.action_path}}
