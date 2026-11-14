@@ -10,7 +10,7 @@ jobs:
         steps:
             - uses: ./github/actions/build-typeorm-action
               with:
-                prod: true
+                prod: 'true'
             - uses: actions/upload-artifact@v7
               with:
                 path: packages/inversify-typeorm/dist
