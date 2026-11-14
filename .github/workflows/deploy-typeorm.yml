@@ -6,12 +6,13 @@ on:
 
 jobs:
     build:
-        uses: PanJoh/panjoh-inversify/.github/workflows/build-package.yml@main
-        with:
-          package-path: packages/inversify-typeorm
-          prod: 'true'
-          artifact-name: dist
-
+        runs-on: ubuntu-latest
+        steps:
+          - uses: PanJoh/panjoh-inversify/.github/actions/build-and-upload-package-action@av1
+            with:
+              package-path: packages/inversify-typeorm
+              artifact-name: dist
+              
     deploy:
         runs-on: ubuntu-latest
         steps:
