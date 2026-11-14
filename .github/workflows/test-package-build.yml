@@ -17,4 +17,6 @@ jobs:
               with:
                 prod: ${{inputs.prod}}
                 package-path: ${{inputs.package-path}}
-            - run: ls packages/inversify-typeorm/dist
+            - run: ls ${PACKAGE_PATH}/dist
+              env:
+                PACKAGE_PATH: ${{inputs.package-path}}
