@@ -1,4 +1,4 @@
-name: typeorm build test
+name: package build test
 on:
     workflow_dispatch:
         inputs:
