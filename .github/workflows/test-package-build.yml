@@ -1,0 +1,20 @@
+name: typeorm build test
+on:
+    workflow_dispatch:
+        inputs:
+            prod:
+                required: true
+                default: 'false'
+            package-path:
+                required: true
+
+jobs:
+    build-typeorm:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v7
+            - uses: ./.github/actions/build-package-action
+              with:
+                prod: ${{inputs.prod}}
+                package-path: ${{inputs.package-path}}
+            - run: ls packages/inversify-typeorm/dist
