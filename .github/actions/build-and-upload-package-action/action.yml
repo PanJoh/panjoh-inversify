@@ -1,0 +1,24 @@
+name: build and upload package
+description: build a package and uploads the build as an artifact
+inputs:
+  package-path:
+    required: true
+    type: string
+  artifact-name:
+    required: true
+    type: string
+
+runs: 
+  using: composite
+  steps:
+    - uses: actions/checkout@v7
+    - uses: ./.github/actions/build-package-action
+      with:
+        prod: true
+        packge-path: ${{inputs.package-path}}
+    - uses: actions/upload-artifact@v7
+      with:
+        name: ${{inputs.artifact-name}}
+        path: "${{inputs.package-path}}/dist"
+
+
