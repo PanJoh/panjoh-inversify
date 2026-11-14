@@ -7,5 +7,5 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v7
-            - uses: ./github/actions/build-typeorm-action
+            - uses: ./.github/actions/build-typeorm-action
             - run: ls packages/inversify-typeorm/dist
