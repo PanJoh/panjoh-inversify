@@ -13,9 +13,25 @@ jobs:
           artifact-name: dist
 
     deploy:
-        uses: PanJoh/panjoh-inversify/.github/workflows/deploy-package.yml@main
-        with:
-          artifact-name: dist
-          package-path: packages/inversify-type-orm
-        secrets:
-          npm-deploy-token: ${{secrets.NPM_DEPLOY_TOKEN}}
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v7
+          - uses: actions/setup-node@v7
+            with:
+              node-version: '24'
+          - uses: actions/download-artifact@v7
+            with:
+              name: dist
+              path: packages/inversify-typeorm/dist
+          - run: |
+              npm publish --access public
+            env:
+              NODE_AUTH_TOKEN: ${{secrets.NPM_DEPLOY_TOKEN}}
+
+
+        # uses: PanJoh/panjoh-inversify/.github/workflows/deploy-package.yml@main
+        # with:
+        #   artifact-name: dist
+        #   package-path: packages/inversify-type-orm
+        # secrets:
+        #   npm-deploy-token: ${{secrets.NPM_DEPLOY_TOKEN}}
