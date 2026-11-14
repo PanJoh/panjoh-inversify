@@ -1,5 +1,5 @@
-name: build-inversify-socket-io
-description: Build the inversify-socket-io package
+name: build-inversify-http-zod
+description: Build the inversify-http-zod package
 inputs:
   prod:
     requierd: true
