@@ -1,3 +1,4 @@
+name: socket io build test
 on:
     workflow_dispatch:
         inputs:
