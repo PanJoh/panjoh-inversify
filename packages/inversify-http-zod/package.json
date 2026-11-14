@@ -14,9 +14,9 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "vitest",
-    "build": "tsc",
-    "build:prod": "tsc --sourceMap false --declarationMap false",
-    "dev": "nodemon -e ts --watch src --exec \"npm run build\""
+    "build": "tsc --project tsconfig.prod.json",
+    "build:dev": "tsc",
+    "dev": "nodemon -e ts --watch src --exec \"npm run build:dev\""
   },
   "devDependencies": {
     "@inversifyjs/http-core": "^5.10.0",

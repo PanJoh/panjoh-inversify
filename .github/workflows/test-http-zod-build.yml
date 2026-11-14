@@ -1,0 +1,20 @@
+name: test http zod test
+description: Test building the inversify-http-zod package
+
+on:
+    workflow_dispatch:
+        inputs:
+            prod:
+                required: true
+                default: 'false'
+
+
+jobs:
+    build-http-zod:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v7
+            - uses: ./.github/actions/build-http-zod
+              with:
+                prod: ${{inputs.prod}}
+            - run: ls packages/inversify-http-zod/dist

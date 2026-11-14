@@ -2,7 +2,7 @@
 
 npm i
 
-cd packages/inversify-socket-io
+cd packages/inversify-http-zod
 
 if [ "$PROD" = "true" ]; then
     npm run build
