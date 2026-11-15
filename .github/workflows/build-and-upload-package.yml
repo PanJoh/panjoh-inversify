@@ -19,7 +19,7 @@ jobs:
             - run: |
                 npm i
                 cd $PACKAGE_PATH
-                if [ -x "script/build" ]; then
+                if [ -x "scripts/build" ]; then
                     ./scripts/build
                 else
                     npm run build
