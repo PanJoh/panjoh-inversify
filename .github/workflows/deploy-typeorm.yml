@@ -6,7 +6,7 @@ on:
 
 jobs:
     build:
-        uses: PanJoh/panjoh-inversify/.github/worflows/build-and-upload-package@av1
+        uses: PanJoh/panjoh-inversify/.github/workflows/build-and-upload-package.yml@av1
         with:
           package-path: packages/inversify-typeorm
           artifact-name: dist
