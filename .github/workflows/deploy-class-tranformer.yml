@@ -6,12 +6,15 @@ on:
 
 jobs:
     build:
-        uses: PanJoh/panjoh-inversify/.github/workflows/build-and-upload-class-transformer.yml@av1
+        uses: PanJoh/panjoh-inversify/.github/workflows/deploy-package.yml@av2
+        with:
+          package-path: packages/inversify-socket-io-class-transformer
+          artifact-name: dist
 
     
     deploy:
         needs: build
-        uses: PanJoh/panjoh-inversify/.github/workflows/deploy-package.yml@av1
+        uses: PanJoh/panjoh-inversify/.github/workflows/deploy-package.yml@av2
         with:
           package-path: packages/inversify-socket-io-class-transformer
           artifact-name: dist
