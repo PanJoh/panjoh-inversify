@@ -15,7 +15,7 @@ jobs:
                 npm i
                 cd packages/inversify-socket-io
                 npm run build
-                cd packages/inversify-socket-io-class-transformer
+                cd ../inversify-socket-io-class-transformer
                 npm run build
             - uses: actions/upload-artifact@v7
               with:
