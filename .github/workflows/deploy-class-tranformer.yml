@@ -6,10 +6,20 @@ on:
 
 jobs:
     build:
-        uses: PanJoh/panjoh-inversify/.github/workflows/build-and-upload-package.yml@av1
-        with:
-          package-path: packages/inversify-socket-io-class-transformer
-          artifact-name: dist
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v7
+          - run: npm i
+          - run: |
+              cd packages/inversify-socket-io
+              npm run build
+          - run: |
+              cd packages/inversify-socket-io-class-transformer
+              npm run build
+          - uses: actions/upload-artifact@v7
+            with:
+              path: packages/inversify-socket-io-class-transromer
+              name: dist
 
     
     deploy:
