@@ -30,3 +30,4 @@ jobs:
                 npm publish --access public
               env:
                 NODE_AUTH_TOKEN: ${{secrets.npm-deploy-token}}
+                PACKAGE_PATH: ${{inputs.package-path}}
