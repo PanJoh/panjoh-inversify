@@ -6,12 +6,18 @@ on:
 
 jobs:
     build:
-        runs-on: ubuntu-latest
-        steps:
-          - uses: PanJoh/panjoh-inversify/.github/actions/build-and-upload-package-action@av1
-            with:
-              package-path: packages/inversify-typeorm
-              artifact-name: dist
+        uses: PanJoh/panjoh-inversify/.github/worflows/build-and-upload-package@av1
+        with:
+          package-path: packages/inversify-typeorm
+          artifact-name: dist
+
+
+        # runs-on: ubuntu-latest
+        # steps:
+        #   - uses: PanJoh/panjoh-inversify/.github/actions/build-and-upload-package-action@av1
+        #     with:
+        #       package-path: packages/inversify-typeorm
+        #       artifact-name: dist
               
     deploy:
         needs: build
@@ -21,10 +27,3 @@ jobs:
           artifact-name: dist
         secrets:
           npm-deploy-token: ${{secrets.NPM_DEPLOY_TOKEN}}
-
-        # uses: PanJoh/panjoh-inversify/.github/workflows/deploy-package.yml@main
-        # with:
-        #   artifact-name: dist
-        #   package-path: packages/inversify-type-orm
-        # secrets:
-        #   npm-deploy-token: ${{secrets.NPM_DEPLOY_TOKEN}}
