@@ -19,7 +19,11 @@ jobs:
             - run: |
                 npm i
                 cd $PACKAGE_PATH
-                npm run build
+                if [ -x "script/build" ]; then
+                    ./scripts/build
+                else
+                    npm run build
+                fi
               env:
                 PACKAGE_PATH: ${{inputs.package-path}}
             - uses: actions/upload-artifact@v7

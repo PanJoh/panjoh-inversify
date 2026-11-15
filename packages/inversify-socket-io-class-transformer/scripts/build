@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+cd ../inversify-socket-io
+npm run build
+
+cd ../inversify-socket-io-class-transformer
+npm run build
