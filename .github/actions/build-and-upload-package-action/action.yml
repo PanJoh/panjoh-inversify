@@ -15,7 +15,7 @@ runs:
     - uses: ./.github/actions/build-package-action
       with:
         prod: true
-        packge-path: ${{inputs.package-path}}
+        package-path: ${{inputs.package-path}}
     - uses: actions/upload-artifact@v7
       with:
         name: ${{inputs.artifact-name}}
